@@ -8,7 +8,7 @@ app_license = "gpl-3.0"
 # Apps
 # ------------------
 
-# required_apps = []
+required_apps = ["erpnext"]
 
 # Each item in the list will be shown as an app in the apps page
 # add_to_apps_screen = [
@@ -170,6 +170,13 @@ app_license = "gpl-3.0"
 # Scheduled Tasks
 # ---------------
 
+# P1.11: failed outside calls are tried again (3 tries, waiting 5, 10, 20 minutes)
+scheduler_events = {
+	"cron": {
+		"*/5 * * * *": ["pk_integrations.base.retry_due"],
+	},
+}
+
 # scheduler_events = {
 # 	"all": [
 # 		"pk_integrations.tasks.all"
@@ -278,4 +285,3 @@ app_license = "gpl-3.0"
 # ------------
 # List of apps whose translatable strings should be excluded from this app's translations.
 # ignore_translatable_strings_from = []
-
